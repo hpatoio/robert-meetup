@@ -1,5 +1,9 @@
 # Meetup manager
 
+## Configuration
+
+1. Rename `.env.dist` into `.env` and fill the environment variables properly.
+
 ## Prepare dev environment
 
 1. Build the container
