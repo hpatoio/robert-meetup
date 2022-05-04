@@ -2,7 +2,7 @@
 
 ## Configuration
 
-1. Rename `.env.sample` into `.env` and fill the environment variables properly.
+1. Rename `.env.dist` into `.env` and fill the environment variables properly.
 
 ## Prepare dev environment
 
