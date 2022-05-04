@@ -2,20 +2,8 @@ import { mapTransactionsToMeetupExcerpt } from './../service/mappers';
 import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
 
-import Arweave from 'arweave';
+import { awi, privateKey, publicAddress, startBlock } from '../service/awi';
 import { Meetup } from '../model/meetup';
-
-const arweave = Arweave.init({
-    host: 'arweave.net',
-    port: 443,
-    protocol: 'https',
-    timeout: 5000
-});
-
-
-const privateKey = JSON.parse(process.env.ARWEAVE_WALLET_PRIVATE_KEY!);
-const publicAddress = process.env.ARWEAVE_WALLET_ADDRESS;
-const startBlock = process.env.ARWEAVE_START_BLOCK;
 
 // getting all meetups
 export const getAll = async (req: Request, res: Response, next: NextFunction) => {
@@ -67,7 +55,7 @@ export const getById = async (req: Request<{id: string}>, res: Response, next: N
 // @TODO add validation on request body
 export const add = async (req: Request<{},{}, Meetup>, res: Response, next: NextFunction) => {
     try {
-        let transaction = await arweave.createTransaction({
+        let transaction = await awi.createTransaction({
             data: JSON.stringify(req.body),
         }, privateKey);
 
@@ -75,9 +63,9 @@ export const add = async (req: Request<{},{}, Meetup>, res: Response, next: Next
         transaction.addTag('Title', req.body.title);
         transaction.addTag('Date', req.body.date);
 
-        await arweave.transactions.sign(transaction, privateKey);
+        await awi.transactions.sign(transaction, privateKey);
 
-        const response = await arweave.transactions.post(transaction);
+        const response = await awi.transactions.post(transaction);
 
         return res.status(response.status).json(response)
     } catch (e) {
