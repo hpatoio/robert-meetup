@@ -55,6 +55,7 @@ export const getById = async (req: Request<{id: string}>, res: Response, next: N
 // @TODO add validation on request body
 export const add = async (req: Request<{},{}, Meetup>, res: Response, next: NextFunction) => {
     try {
+
         let transaction = await awi.createTransaction({
             data: JSON.stringify(req.body),
         }, privateKey);
@@ -67,7 +68,7 @@ export const add = async (req: Request<{},{}, Meetup>, res: Response, next: Next
 
         const response = await awi.transactions.post(transaction);
 
-        return res.status(response.status).json(response)
+        return res.status(201).json({ "id" : transaction.id })
     } catch (e) {
         return res.status(500).json({
             error: (e as Error).message
