@@ -1,10 +1,10 @@
-import Arweave from 'arweave';
+import Arweave from "arweave";
 
 export const awi = Arweave.init({
-    host: 'arweave.net',
-    port: 443,
-    protocol: 'https',
-    timeout: 5000
+  host: "arweave.net",
+  port: 443,
+  protocol: "https",
+  timeout: 5000,
 });
 
 export const privateKey = JSON.parse(process.env.ARWEAVE_WALLET_PRIVATE_KEY!);
