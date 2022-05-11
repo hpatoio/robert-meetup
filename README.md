@@ -25,3 +25,8 @@ docker run -it --rm -v $(pwd):/var/ts -p 6060:6060 ts npm run dev
 ```
 
 You can now connect to `http://localhost:6060/meetups`
+
+## Linting
+
+Run `npm run lint` to check for linting errors.
+Run `npm run lint:fix` to automatic fix common errors.
