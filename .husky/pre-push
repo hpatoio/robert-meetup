@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+docker run --rm -v $(pwd):/var/ts ts npm run lint

@@ -4,7 +4,8 @@
     "dev": "nodemon src/server.ts",
     "build": "rm -rf build/ && prettier --write src/ && tsc",
     "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix"
+    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
@@ -26,6 +27,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.1",
     "prettier": "2.6.2"
   }
 }
