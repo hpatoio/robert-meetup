@@ -35,7 +35,7 @@ Run `npm run lint:fix` to automatic fix common errors.
 
 The app is conteneraized and deploied in Heroku. Here the steps to build and release
 
-- `heroku login` 
-- `heroku container:login`
-- `heroku container:push web -a criptup`
-- `heroku container:release web -a criptup`
+- `npx heroku login` 
+- `npx heroku container:login`
+- `npx heroku container:push web -a criptup`
+- `npx heroku container:release web -a criptup`
