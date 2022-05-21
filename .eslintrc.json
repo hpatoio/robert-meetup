@@ -16,5 +16,6 @@
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "quotes": ["error", "double"]
-  }
+  },
+  "ignorePatterns": ["build"]
 }
