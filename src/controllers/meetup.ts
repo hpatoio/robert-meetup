@@ -56,7 +56,6 @@ export const getById = async (req: Request<{ id: string }>, res: Response) => {
   }
 };
 
-// @TODO add a middleware for authorization, you need to be authorized to add new meetups
 // @TODO add validation on request body
 export const add = async (req: Request<{}, {}, Meetup>, res: Response) => {
   try {
