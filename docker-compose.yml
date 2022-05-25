@@ -1,0 +1,34 @@
+---
+version: '3'
+
+volumes:
+  criptup-source:
+    external: true
+
+networks:
+  default:  # This network will be used from other projects in order to being able to communicate with the core
+    name: criptup-net
+    ipam:
+      driver: default
+
+services:
+  nodejs:
+    container_name: criptup.nodejs
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: dev
+    depends_on:
+      - redis
+    command: sleep infinity
+    volumes:
+      - criptup-source:/var/ts:delegated
+    ports:
+      - 6060:6060
+
+  redis:
+    image: redis
+    container_name: criptup.redis
+    restart: unless-stopped
+    sysctls:
+        - net.core.somaxconn=512
