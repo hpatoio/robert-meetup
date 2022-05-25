@@ -1,0 +1,8 @@
+volumes:
+    ## Remove this volume if you use Docker for Mac with docker-sync
+    criptup-source:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: "${PWD}/"
