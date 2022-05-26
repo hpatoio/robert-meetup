@@ -4,6 +4,7 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "nodemon src/server.ts",
+    "consumer": "ts-node src/command/consumer.ts",
     "build": "rm -rf build/ && tsc",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix",
