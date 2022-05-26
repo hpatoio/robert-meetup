@@ -19,6 +19,7 @@ export const getById = async (
     return res.status(404);
   }
 };
+// const Redis = require("ioredis");
 
 // @TODO add validation on request body
 export const add = async (
@@ -28,6 +29,10 @@ export const add = async (
   try {
     const jobId = stringToBase64(req.body.name);
     // Add job to queue here
+    // const redis = new Redis(process.env.REDIS_URL);
+    // const channel = "organization";
+
+    // redis.publish(channel, req.body.name);
 
     return res.status(201).json({ jobId });
   } catch (e) {
