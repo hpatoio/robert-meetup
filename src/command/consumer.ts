@@ -1,17 +1,23 @@
 import "dotenv/config";
 
-const NRP = require("node-redis-pubsub");
+const Redis = require("ioredis");
 
-const url = process.env.REDIS_URL;
-const config = {
-  url,
-};
+const redis = new Redis(process.env.REDIS_URL);
+const channel = "organization";
 
-const nrp = new NRP(config); // This is the NRP client
+redis.subscribe(channel, (err, count) => {
+  if (err) {
+    console.error("Failed to subscribe: %s", err.message);
+  } else {
+    // `count` represents the number of channels this client are currently subscribed to.
+    console.log(
+      `Subscribed successfully! This client is currently subscribed to ${count} channels.`
+    );
+  }
+});
 
-function createOrganization(data) {
-  return data;
-  // Prettier è una merda ! console.log(`Hello ${data.name}`);
-}
-
-nrp.on("create:organization", createOrganization);
+redis.on("message", (receivingChannel, message) => {
+  console.log(
+    `Your favourite animal is ${message} in channle ${receivingChannel}`
+  );
+});
