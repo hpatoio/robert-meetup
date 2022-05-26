@@ -39,8 +39,13 @@ You can now connect to `http://localhost:6060/meetups`
       "date": "2022-07-12T14:30:44.660Z"
     }
     ```
+## Consumer
 
-## Queue processing
+To run the consumer you can use
+
+```shell
+docker-compose exec nodejs npm run consumer
+```
 
 ## Linting
 
