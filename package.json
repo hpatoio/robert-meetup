@@ -4,12 +4,11 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "consumer": "ts-node src/command/consumer.ts",
     "build": "rm -rf build/ && tsc",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix",
     "prepare": "husky install",
-    "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/consumer.ts",
+    "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/command/consumer.ts",
     "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts",
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watch"
