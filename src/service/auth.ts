@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from "express";
+import { assertDefined } from "../utils/invariants";
 
 const { ADMIN_SECRET } = process.env;
 
-if (!ADMIN_SECRET) {
-  throw Error("ADMIN_SECRET must be defined!");
-}
+assertDefined(ADMIN_SECRET, "ADMIN_SECRET must be defined!");
 
 export const onlyAdmins = (
   request: Request,
