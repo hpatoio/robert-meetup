@@ -1,4 +1,4 @@
-import { MeetupExcerpt } from "../model/meetup";
+import { MeetupExcerpt } from "@/model/meetup";
 
 export const mapTransactionsToMeetupExcerpt = (data): MeetupExcerpt[] =>
   data.transactions.edges.map((edge) => ({

@@ -3,7 +3,7 @@ import "dotenv/config";
 import http from "http";
 import express, { Express } from "express";
 import morgan from "morgan";
-import routes from "./routes/meetup";
+import routes from "@/routes/meetup";
 
 const router: Express = express();
 

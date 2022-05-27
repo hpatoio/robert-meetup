@@ -1,7 +1,7 @@
 /** source/routes/posts.ts */
 import express from "express";
-import { getAll, getById, add } from "../controllers/meetup";
-import { onlyAdmins } from "../service/auth";
+import { getAll, getById, add } from "@/controllers/meetup";
+import { onlyAdmins } from "@/service/auth";
 
 const router = express.Router();
 
