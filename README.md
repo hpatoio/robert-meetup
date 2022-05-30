@@ -2,34 +2,43 @@
 
 ## Configuration
 
-1. Rename `.env.dist` into `.env` and fill the environment variables properly.
+1. Copy `.env.dist` into `.env` and fill the environment variables properly.
+1. Copy `docker-compose.override.yml.dist` into `docker-compose.override.yml` and change things accordling
 
 ## Prepare dev environment
 
-1. Build the container
+1. Build the dev environment
 
 ```shell
-docker build --target dev . --tag ts
+docker-compose up -d --build
 ```
 
 2. Install needed packages
 
 ```shell
-docker run -it --rm -v $(pwd):/var/ts ts npm install
+docker-compose exec nodejs npm install
 ```
 
 3. Start the server
 
 ```shell
-docker run -it --rm -v $(pwd):/var/ts -p 6060:6060 ts npm run dev
+docker-compose exec nodejs npm run dev
 ```
 
 You can now connect to `http://localhost:6060/meetups`
 
+## Consumer
+
+To run the consumer you can use
+
+```shell
+docker-compose exec nodejs npm run consumer
+```
+
 ## Linting
 
-Run `npm run lint` to check for linting errors.
-Run `npm run lint:fix` to automatic fix common errors.
+Run `docker-compose exec nodejs npm run lint` to check for linting errors.
+Run `docker-compose exec nodejs npm run lint:fix` to automatic fix common errors.
 
 ## Deploying
 

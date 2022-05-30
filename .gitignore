@@ -2,3 +2,4 @@ node_modules
 !build/.gitkeep
 build/
 .env
+docker-compose.override.yml

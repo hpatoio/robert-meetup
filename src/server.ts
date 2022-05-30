@@ -3,7 +3,8 @@ import "dotenv/config";
 import http from "http";
 import express, { Express } from "express";
 import morgan from "morgan";
-import routes from "./routes/meetup";
+import routesMeetup from "./routes/meetup";
+import routesOrganization from "./routes/organization";
 
 const router: Express = express();
 
@@ -32,7 +33,8 @@ router.use((req, res, next) => {
 });
 
 /** Routes */
-router.use("/", routes);
+router.use("/", routesOrganization);
+router.use("/", routesMeetup);
 
 /** Error handling */
 router.use((req, res) => {
