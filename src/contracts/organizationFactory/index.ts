@@ -3,6 +3,7 @@ import Web3 from "web3";
 // import erc20ABI from "./abi/erc20";
 import organizationFactoryABI from "./abi/organizationFactory";
 import { assertDefined } from "../../utils/invariants";
+import "dotenv/config";
 
 const { RELAY_API_KEY, RELAY_API_SECRET, ORGANIZATION_FACTORY_ADDRESS } =
   process.env;
