@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import axios, { AxiosResponse } from "axios";
-import { mapTransactionsToMeetupExcerpt } from "../service/mappers";
+import { mapTransactionsToMeetupExcerpt } from "@/service/mappers";
 
-import { awi, privateKey, publicAddress, startBlock } from "../service/awi";
-import { Meetup } from "../model/meetup";
+import { awi, privateKey, publicAddress, startBlock } from "@/service/awi";
+import { Meetup } from "@/model/meetup";
 
 // getting all meetups
 export const getAll = async (req: Request, res: Response) => {
