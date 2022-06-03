@@ -52,6 +52,7 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 
 If you want to avoid using a distributed blockchain while developing (es: Mumbai, Rinkeby, ...) you can run a local blockchain simulator like [Ganache](https://github.com/trufflesuite/ganache).
 
+- set **NODE_ENV=development** inside `.env`
 - open a new tab and run `npx ganache --database.dbPath db -d -b 5` 
 - copy the **seed phrase** inside `.env` `GANACHE_SEED`
 - run `npx ts-node scripts/ganacheDeployContracts.ts` (this will deploy the smart contracts on the chain)
