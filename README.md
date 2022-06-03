@@ -26,6 +26,14 @@ docker run -it --rm -v $(pwd):/var/ts -p 6060:6060 ts npm run dev
 
 You can now connect to `http://localhost:6060/meetups`
 
+## Queue processing
+
+1. Run consumer (run this command in a new tab of your terminal, must run together with the server)
+
+```shell
+docker run -it --rm -v $(pwd):/var/ts -p 6060:6060 ts npm run consumer
+```
+
 ## Linting
 
 Run `npm run lint` to check for linting errors.
