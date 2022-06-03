@@ -32,7 +32,7 @@ export const createOrganization = async ({ name, organizers }: Params) => {
   const receipt = await organizationFactoryContract.methods
     .createOrganization(name, organizers, [50, 50])
     .send()
-    .on("sending", () => console.log("Sending TX.."))
+    .on("sending", () => console.log("Sending Transaction..."))
     .on("transactionHash", (hash) =>
       console.log(`Sent: https://mumbai.polygonscan.com/tx/${hash}`)
     )
