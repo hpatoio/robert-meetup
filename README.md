@@ -47,3 +47,13 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 - `npx heroku container:login` (log in to Heroku Container Registry)
 - `npx heroku container:push web -a criptup` (builds, then pushes Docker images to deploy your Heroku app)
 - `npx heroku container:release web -a criptup` (Releases previously pushed Docker images to your Heroku app)
+
+## Test with local blockchain (Ganache)
+
+If you want to avoid using a distributed blockchain while developing (es: Mumbai, Rinkeby, ...) you can run a local blockchain simulator like [Ganache](https://github.com/trufflesuite/ganache).
+
+- open a new tab and run `npx ganache --database.dbPath db -d -b 5` 
+- copy the **seed phrase** inside `.env` `GANACHE_SEED`
+- run `npx ts-node scripts/ganacheDeployContracts.ts` (this will deploy the smart contracts on the chain)
+- copy the **organization factory contract address** inside `.env` `ORGANIZATION_FACTORY_ADDRESS`
+- ready to go! You can now start the server and the consumer.
