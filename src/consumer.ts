@@ -24,6 +24,7 @@ const start = async () => {
         "0x22d491Bde2303f2f43325b2108D26f1eAbA1e32b",
       ],
     });
+    console.log("\n\r> Contract created:");
     console.log(contractAddress);
   } catch (e) {
     console.error(e);
