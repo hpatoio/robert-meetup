@@ -26,7 +26,8 @@ const start = async () => {
     });
     console.log(contractAddress);
   } catch (e) {
-    console.error("Contract creation failed!");
+    console.error(e);
+    console.error("\n\r> Contract creation failed!");
   }
 };
 
