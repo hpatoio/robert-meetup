@@ -8,7 +8,7 @@
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix",
     "prepare": "husky install",
-    "worker": "ts-node src/worker.ts"
+    "consumer": "ts-node src/consumer.ts"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
