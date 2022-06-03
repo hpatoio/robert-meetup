@@ -2,7 +2,12 @@ import { Request, Response } from "express";
 import axios, { AxiosResponse } from "axios";
 import { mapTransactionsToMeetupExcerpt } from "../services/mappers";
 
-import { awi, privateKey, publicAddress, startBlock } from "../services/awi";
+import {
+  awi,
+  privateKey,
+  publicAddress,
+  startBlock,
+} from "../services/arweave";
 import { Meetup } from "../model/meetup";
 
 // getting all meetups
