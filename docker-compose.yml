@@ -26,6 +26,16 @@ services:
     ports:
       - 6060:6060
 
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    container_name: criptup.ganache
+    restart: unless-stopped
+    volumes:
+      - criptup-source:/var/ts:delegated
+    ports:
+      - 8545:8545
+    command: --db=/var/ts/ganache-db -d -b 5
+
   redis:
     image: redis
     container_name: criptup.redis
