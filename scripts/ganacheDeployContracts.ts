@@ -23,7 +23,7 @@ const provider = new HDWalletProvider({
   mnemonic: {
     phrase: GANACHE_SEED,
   },
-  providerOrUrl: GANACHE_URL || "http://localhost:8545",
+  providerOrUrl: GANACHE_URL || "http://criptup.ganache:8545",
 });
 
 const web3 = new Web3(provider);
