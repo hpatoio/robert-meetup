@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import axios, { AxiosResponse } from "axios";
-import { mapTransactionsToMeetupExcerpt } from "../services/mappers";
-
 import {
-  awi,
-  privateKey,
+  getData,
+  saveData,
   publicAddress,
+  queryData,
   startBlock,
 } from "../services/arweave";
+import { mapTransactionsToMeetupExcerpt } from "../services/mappers";
+
 import { Meetup } from "../model/meetup";
 
-// getting all meetups
+// getting all meetups, it gets data from chain so need some minutes to a new data to be available
 export const getAll = async (req: Request, res: Response) => {
   try {
     const graphQLQuery = `
@@ -28,16 +28,9 @@ export const getAll = async (req: Request, res: Response) => {
                 }
             }
         `;
+    const data = await queryData(graphQLQuery);
 
-    const response: AxiosResponse = await axios.post(
-      "https://arweave.net/graphql",
-      {
-        query: graphQLQuery,
-      }
-    );
-    return res
-      .status(200)
-      .json(mapTransactionsToMeetupExcerpt(response.data.data));
+    return res.status(200).json(mapTransactionsToMeetupExcerpt(data));
   } catch (e) {
     return res.status(500).json({
       error: (e as Error).message,
@@ -48,14 +41,8 @@ export const getAll = async (req: Request, res: Response) => {
 // get a meetup by arweave transaction id
 export const getById = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const response: AxiosResponse = await axios.get(
-      `http://arweave.net/${req.params.id}`
-    );
-    return res.status(200).json(response.data);
-
-    // Seems the sdk is not working for retrieving transactions :(
-    // const data = await arweave.transactions.getData(req.params.id, {decode: true});
-    // return res.status(200).json(data);
+    const data = await getData(req.params.id);
+    return res.status(200).json(data);
   } catch (e) {
     return res.status(404);
   }
@@ -64,21 +51,12 @@ export const getById = async (req: Request<{ id: string }>, res: Response) => {
 // @TODO add validation on request body
 export const add = async (req: Request<{}, {}, Meetup>, res: Response) => {
   try {
-    const transaction = await awi.createTransaction(
-      {
-        data: JSON.stringify(req.body),
-      },
-      privateKey
-    );
+    const transactionId = await saveData(req.body, {
+      Title: req.body.title,
+      Date: req.body.date,
+    });
 
-    transaction.addTag("Content-Type", "application/json");
-    transaction.addTag("Title", req.body.title);
-    transaction.addTag("Date", req.body.date);
-
-    await awi.transactions.sign(transaction, privateKey);
-    await awi.transactions.post(transaction);
-
-    return res.status(201).json({ id: transaction.id });
+    return res.status(201).json({ id: transactionId });
   } catch (e) {
     return res.status(500).json({
       error: (e as Error).message,
