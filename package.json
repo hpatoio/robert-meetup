@@ -8,7 +8,7 @@
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix",
     "prepare": "husky install",
-    "consumer": "ts-node src/consumer.ts",
+    "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/consumer.ts",
     "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts"
   },
   "dependencies": {

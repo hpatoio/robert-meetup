@@ -49,6 +49,12 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 - `npx heroku container:push web -a criptup` (builds, then pushes Docker images to deploy your Heroku app)
 - `npx heroku container:release web -a criptup` (Releases previously pushed Docker images to your Heroku app)
 
+## Consume messages
+
+```
+docker-compose exec nodejs npm run consume
+```
+
 ## Test with local blockchain (Ganache)
 
 The project has a running [Ganache](https://github.com/trufflesuite/ganache) instance. This allow you to avoid using a distributed blockchain while developing (es: Mumbai, Rinkeby, ...)
