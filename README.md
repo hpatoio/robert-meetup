@@ -51,11 +51,47 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 
 ## Test with local blockchain (Ganache)
 
-If you want to avoid using a distributed blockchain while developing (es: Mumbai, Rinkeby, ...) you can run a local blockchain simulator like [Ganache](https://github.com/trufflesuite/ganache).
+The project has a running [Ganache](https://github.com/trufflesuite/ganache) instance. This allow you to avoid using a distributed blockchain while developing (es: Mumbai, Rinkeby, ...)
 
-- set **NODE_ENV=development** inside `.env`
-- open a new tab and run `npx ganache --database.dbPath db -d -b 5` 
-- copy the **seed phrase** inside `.env` `GANACHE_SEED`
-- run `npx ts-node scripts/ganacheDeployContracts.ts` (this will deploy the smart contracts on the chain)
-- copy the **organization factory contract address** inside `.env` `ORGANIZATION_FACTORY_ADDRESS`
-- ready to go! You can now start the server and the consumer.
+To use set it up you need:
+
+##### Set `GANACHE_SEED`
+
+Run `docker-compose logs ganache | grep Mnemonic`. You should get a response like 
+
+```
+criptup.ganache  | Mnemonic:      myth like bonus scare over problem client lizard pioneer submit female collect
+criptup.ganache  | Mnemonic:      myth like bonus scare over problem client lizard pioneer submit female collect
+criptup.ganache  | Mnemonic:      myth like bonus scare over problem client lizard pioneer submit female collect
+```
+
+don't worry about the multiples lines. Is because you started the services more times.
+
+Set the value of `GANACHE_SEED` in the `.env` like
+
+```
+GANACHE_SEED="asdasd asdasd asd asd as das"
+```
+
+##### Deploy the contract on Ganache
+
+Run
+
+```
+docker-compose exec nodejs npm run smart-contract:deploy
+```
+
+you will get a response like 
+
+```
+> OrganizationFactory contract created:
+0x5b1869D9A4C187F2EAa108f3062412ecf0526b24
+```
+
+##### Set Organization Factory Address
+
+You can set the organization address in the `.env`
+
+```
+ORGANIZATION_FACTORY_ADDRESS="0x5b1869D9A4C187F2EAa108f3062412ecf0526b24"
+```
