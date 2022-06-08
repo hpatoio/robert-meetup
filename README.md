@@ -42,12 +42,6 @@ You can now connect to `http://localhost:6060/meetups`
 
 ## Queue processing
 
-1. Run consumer (run this command in a new tab of your terminal, must run together with the server)
-
-```shell
-docker run -it --rm -v $(pwd):/var/ts -p 6060:6060 ts npm run consumer
-```
-
 ## Linting
 
 Run `docker-compose exec nodejs npm run lint` to check for linting errors.
@@ -62,7 +56,11 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 - `npx heroku container:push web -a criptup` (builds, then pushes Docker images to deploy your Heroku app)
 - `npx heroku container:release web -a criptup` (Releases previously pushed Docker images to your Heroku app)
 
-## Consume messages
+## Queues
+
+### Consume messages
+
+Run this command in a terminal along with the server
 
 ```
 docker-compose exec nodejs npm run consume
