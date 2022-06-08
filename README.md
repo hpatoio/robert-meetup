@@ -27,6 +27,19 @@ docker-compose exec nodejs npm run dev
 
 You can now connect to `http://localhost:6060/meetups`
 
+## Endpoints
+
+- GET `http://localhost:6060/meetups` (get all meetups)
+- GET `http://localhost:6060/meetups/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8` (get a specific meetup passing [arweave transactionId](https://viewblock.io/arweave/tx/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8))
+- POST `http://localhost:6060/meetups` 
+    ```js
+    {
+      "title": "Learn JS from Scratch",
+      "desc": "From the basics",
+      "date": "2022-07-12T14:30:44.660Z"
+    }
+    ```
+
 ## Queue processing
 
 1. Run consumer (run this command in a new tab of your terminal, must run together with the server)
@@ -101,3 +114,4 @@ You can set the organization address in the `.env`
 ```
 ORGANIZATION_FACTORY_ADDRESS="0x5b1869D9A4C187F2EAa108f3062412ecf0526b24"
 ```
+
