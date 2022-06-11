@@ -9,9 +9,12 @@
     "lint:fix": "eslint . --ext .js,.ts --fix",
     "prepare": "husky install",
     "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/consumer.ts",
-    "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts"
+    "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.8",
     "@types/axios": "^0.14.0",
     "@types/express": "^4.17.13",
     "@types/morgan": "^1.9.3",
@@ -24,18 +27,21 @@
     "nodemon": "^2.0.16",
     "throng": "^5.0.0",
     "ts-node": "^10.7.0",
-    "web3": "^1.7.3",
-    "@truffle/hdwallet-provider": "^2.0.8"
+    "web3": "^1.7.3"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.5.3",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.1",
-    "prettier": "2.6.2"
+    "jest": "^28.1.1",
+    "prettier": "2.6.2",
+    "ts-jest": "^28.0.4"
   }
 }
