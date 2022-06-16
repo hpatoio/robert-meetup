@@ -47,6 +47,12 @@ You can now connect to `http://localhost:6060/meetups`
 Run `docker-compose exec nodejs npm run lint` to check for linting errors.
 Run `docker-compose exec nodejs npm run lint:fix` to automatic fix common errors.
 
+## Testing
+
+Run `docker-compose exec nodejs npm run test` to run unit tests once.
+Run `docker-compose exec nodejs npm run test:watch` to run unit tests [every time a file change](https://jestjs.io/docs/cli#--watch).
+
+
 ## Deploying
 
 The app is conteneraized and deploied in Heroku. Here the steps to build and release
