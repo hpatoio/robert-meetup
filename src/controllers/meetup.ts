@@ -15,16 +15,24 @@ export const getAll = async (req: Request, res: Response) => {
   try {
     const graphQLQuery = `
             query {
-                transactions(owners:["${publicAddress}"], sort: HEIGHT_DESC, block: {min: ${startBlock}}) {
-                    edges {
-                        node {
-                            id,
-                            tags {
-                                name,
-                                value
-                            }
-                        }
-                    }
+                transactions(
+                  owners:["${publicAddress}"], 
+                  block: {min: ${startBlock}},
+                  tags: {
+                    name: "Model",
+                    values: ["Meetup"]
+                  }
+                  sort: HEIGHT_DESC, 
+                ) {
+                  edges {
+                      node {
+                          id,
+                          tags {
+                              name,
+                              value
+                          }
+                      }
+                  }
                 }
             }
         `;
@@ -52,6 +60,7 @@ export const getById = async (req: Request<{ id: string }>, res: Response) => {
 export const add = async (req: Request<{}, {}, Meetup>, res: Response) => {
   try {
     const transactionId = await saveData(req.body, {
+      Model: "Meetup",
       Title: req.body.title,
       Date: req.body.date,
     });
