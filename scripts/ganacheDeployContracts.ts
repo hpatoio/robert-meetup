@@ -29,15 +29,15 @@ const provider = new HDWalletProvider({
 const web3 = new Web3(provider);
 
 (async () => {
-  const [from] = await web3.eth.getAccounts();
-
-  const organizationFactoryContract = new web3.eth.Contract(
-    organizationFactoryABI,
-    undefined,
-    { from }
-  );
-
   try {
+    const [from] = await web3.eth.getAccounts();
+
+    const organizationFactoryContract = new web3.eth.Contract(
+      organizationFactoryABI,
+      undefined,
+      { from }
+    );
+
     const newContract = await organizationFactoryContract
       .deploy({
         data: organizationFactoryBytecode,

@@ -24,7 +24,8 @@ services:
     volumes:
       - criptup-source:/var/ts:delegated
     ports:
-      - 6060:6060
+      - 6060:6060 # port for express app
+      - 3000:3000 # port for queue monitor
 
   ganache:
     image: trufflesuite/ganache-cli:latest
@@ -40,5 +41,7 @@ services:
     image: redis
     container_name: criptup.redis
     restart: unless-stopped
+    ports:
+      - 6379:6379
     sysctls:
         - net.core.somaxconn=512
