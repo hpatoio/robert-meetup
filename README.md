@@ -29,6 +29,8 @@ You can now connect to `http://localhost:6060/meetups`
 
 ## Endpoints
 
+### Meetups
+
 - GET `http://localhost:6060/meetups` (get all meetups)
 - GET `http://localhost:6060/meetups/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8` (get a specific meetup passing [arweave transactionId](https://viewblock.io/arweave/tx/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8))
 - POST `http://localhost:6060/meetups` 
@@ -39,6 +41,7 @@ You can now connect to `http://localhost:6060/meetups`
       "date": "2022-07-12T14:30:44.660Z"
     }
     ```
+
 ## Consumer
 
 To run the consumer you can use
@@ -47,7 +50,7 @@ To run the consumer you can use
 docker-compose exec nodejs npm run consumer
 ```
 
-You can check queues status 
+You can check queues status using `docker-compose exec nodejs npm run monitor:queue`
 
 ## Linting
 

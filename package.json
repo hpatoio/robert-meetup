@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider nodemon src/server.ts",
     "build": "rm -rf build/ && tsc",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --ext .js,.ts --fix",
@@ -11,16 +11,18 @@
     "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/command/consumer.ts",
     "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts",
     "test": "jest --runInBand",
-    "test:watch": "jest --runInBand --watch"
+    "test:watch": "jest --runInBand --watch",
+    "monitor:queue": "bull-monitor -q organization --host criptup.nodejs --redis-uri redis://criptup.redis:6379"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.8",
     "@types/axios": "^0.14.0",
     "@types/express": "^4.17.13",
-    "@types/morgan": "^1.9.3",
     "@types/jest": "^28.1.1",
+    "@types/morgan": "^1.9.3",
     "arweave": "^1.10.23",
     "axios": "^0.27.2",
+    "bull": "^4.8.5",
     "defender-relay-client": "^1.21.3",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
@@ -32,6 +34,8 @@
     "web3": "^1.7.3"
   },
   "devDependencies": {
+    "@bull-monitor/cli": "^5.0.1",
+    "@types/bull": "^3.15.9",
     "@types/node": "^17.0.35",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",

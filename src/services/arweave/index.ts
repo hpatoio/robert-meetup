@@ -80,7 +80,6 @@ export const waitForTransactionConfirmation = (id) => {
     const { status, confirmed } = await arweave.transactions.getStatus(
       transactionId
     );
-    console.log(status, confirmed);
     return status === 200 && confirmed;
   };
 

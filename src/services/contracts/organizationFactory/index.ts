@@ -30,7 +30,11 @@ interface Params {
 
 export const createOrganization = async ({ name, organizers }: Params) => {
   const receipt = await organizationFactoryContract.methods
-    .createOrganization(name, organizers, [50, 50])
+    .createOrganization(
+      name,
+      organizers,
+      organizers.map(() => 10) // same number, same share
+    )
     .send()
     .on("sending", () => console.log("Sending Transaction..."))
     .on("transactionHash", (hash) =>
