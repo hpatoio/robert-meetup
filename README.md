@@ -47,6 +47,8 @@ To run the consumer you can use
 docker-compose exec nodejs npm run consumer
 ```
 
+You can check queues status 
+
 ## Linting
 
 Run `docker-compose exec nodejs npm run lint` to check for linting errors.
