@@ -13,4 +13,4 @@ FROM --platform=linux/amd64 node:18-slim
 COPY --from=builder /var/ts/node_modules /var/criptup/node_modules
 COPY --from=builder /var/ts/build /var/criptup
 WORKDIR /var/criptup
-CMD ["node","server.js"]
+#CMD ["node","server.js"]

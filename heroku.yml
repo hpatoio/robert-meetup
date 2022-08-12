@@ -1,0 +1,10 @@
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: node server.js
+  worker:
+    command: 
+      - node command/consumer.js
+    image: web
