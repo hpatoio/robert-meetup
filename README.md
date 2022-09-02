@@ -111,7 +111,7 @@ GANACHE_SEED="asdasd asdasd asd asd as das"
 Run
 
 ```
-docker-compose exec nodejs npm run smart-contract:deploy
+docker-compose exec nodejs npm run ganache:smart-contract:deploy
 ```
 
 you will get a response like 

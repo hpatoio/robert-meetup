@@ -28,7 +28,7 @@ services:
       - 3000:3000 # port for queue monitor
 
   ganache:
-    image: trufflesuite/ganache-cli:latest
+    image: trufflesuite/ganache:v7.2.0
     container_name: criptup.ganache
     restart: unless-stopped
     volumes:
