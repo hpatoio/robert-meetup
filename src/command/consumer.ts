@@ -6,11 +6,9 @@ import {
 } from "../model/organization";
 import "dotenv/config";
 import { createOrganization as createOrganizationContract } from "../services/contracts/organizationFactory/index";
-import { assertDefined } from "../utils/invariants";
 import { saveData as saveDataOnArweave } from "../services/arweave";
 
 const { REDIS_URL } = process.env;
-assertDefined(REDIS_URL, "REDIS_URL must be defined!");
 
 // Spin up multiple processes to handle jobs to take advantage of more CPU cores
 // See: https://devcenter.heroku.com/articles/node-concurrency for more info
