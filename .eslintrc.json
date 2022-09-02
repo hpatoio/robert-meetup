@@ -16,7 +16,11 @@
     "import/prefer-default-export": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "enums": true, "typedefs": true, "ignoreTypeReferences": false },
+    ]
   },
   "ignorePatterns": ["build"]
 }

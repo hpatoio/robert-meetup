@@ -14,10 +14,8 @@ import {
   queryData,
 } from "../services/arweave";
 import { stringToBase64 } from "../utils/base64";
-import { assertDefined } from "../utils/invariants";
 
 const { REDIS_URL } = process.env;
-assertDefined(REDIS_URL, "REDIS_URL must be defined!");
 
 const organizationQueue = new Queue<OrganizationPostRequest>(
   "organization",

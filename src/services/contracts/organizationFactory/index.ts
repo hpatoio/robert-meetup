@@ -1,13 +1,7 @@
-import { assertDefined } from "../../../utils/invariants";
 import web3 from "../index";
 import organizationFactoryABI from "./abi/organizationFactory";
 
 const { ORGANIZATION_FACTORY_ADDRESS } = process.env;
-
-assertDefined(
-  ORGANIZATION_FACTORY_ADDRESS,
-  "ORGANIZATION_FACTORY_ADDRESS must be defined!"
-);
 
 let organizationFactoryContract;
 
