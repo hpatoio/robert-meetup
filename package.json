@@ -9,7 +9,7 @@
     "lint:fix": "eslint . --ext .js,.ts --fix",
     "prepare": "husky install",
     "consumer": "NODE_OPTIONS=--openssl-legacy-provider ts-node src/command/consumer.ts",
-    "smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts",
+    "ganache:smart-contract:deploy": "NODE_OPTIONS=--openssl-legacy-provider ts-node scripts/ganacheDeployContracts.ts",
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watch",
     "monitor:queue": "bull-monitor -q organization --host criptup.nodejs --redis-uri redis://criptup.redis:6379"
