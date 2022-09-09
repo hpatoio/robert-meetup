@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-docker run --rm -v $(pwd):/var/ts ts npm run lint
-docker run --rm -v $(pwd):/var/ts ts npm run test
+docker run --rm -v $(pwd):/var/ts meetup-api_nodejs npm run lint
+docker run --rm -v $(pwd):/var/ts meetup-api_nodejs npm run test
