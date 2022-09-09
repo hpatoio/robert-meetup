@@ -19,8 +19,10 @@
     "quotes": ["error", "double"],
     "@typescript-eslint/no-use-before-define": [
       "error",
-      { "enums": true, "typedefs": true, "ignoreTypeReferences": false },
-    ]
+      { "enums": true, "typedefs": true, "ignoreTypeReferences": false }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   },
   "ignorePatterns": ["build"]
 }

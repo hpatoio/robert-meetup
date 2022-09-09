@@ -69,7 +69,7 @@ export const getById = async (
       ...data,
     });
   } catch (e) {
-    return res.status(404);
+    return res.status(404).send();
   }
 };
 

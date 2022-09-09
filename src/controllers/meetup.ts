@@ -52,7 +52,7 @@ export const getById = async (req: Request<{ id: string }>, res: Response) => {
     const data = await getData(req.params.id);
     return res.status(200).json(data);
   } catch (e) {
-    return res.status(404);
+    return res.status(404).send();
   }
 };
 
