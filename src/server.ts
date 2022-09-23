@@ -6,7 +6,7 @@ import morgan from "morgan";
 import { connectToMongoDB } from "./services/db/index";
 import meetupRoutes from "./routes/meetup";
 import userRoutes from "./routes/user";
-import organizationRoutes from "./routes/organization";
+import communityRoutes from "./routes/community";
 
 const router: Express = express();
 
@@ -36,7 +36,7 @@ router.use((req, res, next) => {
 
 /** Routes */
 router.use("/meetups", meetupRoutes);
-router.use("/organizations", organizationRoutes);
+router.use("/communities", communityRoutes);
 router.use("/users", userRoutes);
 
 /** Error handling */

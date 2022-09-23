@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { generateMessageNonce, generateMessageHash } from "../utils/crypto";
+import { generateMessageNonce, generateDigest } from "../utils/crypto";
 import type { User as IUser } from "../model/user";
 import { User } from "../services/db/user";
 
@@ -86,13 +86,13 @@ export const remove = async (
 
 export const getMessageToSign = async (
   req: Request,
-  res: Response<{ message: string; hash: string }>
+  res: Response<{ message: string; digest: string }>
 ) => {
   const message = `Welcome to Open-Meetup!\n\nSign this message to prove your identity.\n\nThis request will not trigger a blockchain transaction or cost any gas fees. It's totally safe and we won't get in control of your funds at any time.\n\nNonce:${generateMessageNonce()}`;
 
-  const hash = generateMessageHash(message);
+  const digest = generateDigest(message);
   return res.status(200).json({
     message,
-    hash,
+    digest,
   });
 };

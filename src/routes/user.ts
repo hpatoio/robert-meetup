@@ -1,6 +1,6 @@
 import express from "express";
 import { body, param } from "express-validator";
-import { validate } from "../services/validation";
+import { requireSignature, validate } from "../services/validation";
 import { onlySigned } from "../services/auth";
 import {
   getByAddress,
@@ -23,11 +23,9 @@ router.post(
   validate([
     body("username").notEmpty(),
     body("wallet").notEmpty().bail().isEthereumAddress(),
-    body("signedMessage").notEmpty(),
-    body("message").notEmpty(),
-    body("messageHash").notEmpty(),
+    ...requireSignature(),
   ]),
-  onlySigned,
+  onlySigned("wallet"),
   add
 );
 router.patch(
@@ -36,22 +34,18 @@ router.patch(
     param("wallet").notEmpty().bail().isEthereumAddress(),
     body("wallet").not().exists(),
     body("username").notEmpty(),
-    body("signedMessage").notEmpty(),
-    body("message").notEmpty(),
-    body("messageHash").notEmpty(),
+    ...requireSignature(),
   ]),
-  onlySigned,
+  onlySigned("wallet"),
   edit
 );
 router.delete(
   "/:wallet",
   validate([
     param("wallet").notEmpty().bail().isEthereumAddress(),
-    body("signedMessage").notEmpty(),
-    body("message").notEmpty(),
-    body("messageHash").notEmpty(),
+    ...requireSignature(),
   ]),
-  onlySigned,
+  onlySigned("wallet"),
   remove
 );
 
