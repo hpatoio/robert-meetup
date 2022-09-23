@@ -29,28 +29,7 @@ You can now connect to `http://localhost:6060/meetups`
 
 ## Endpoints
 
-### Meetups
-
-- GET `http://localhost:6060/meetups` (get all meetups)
-- GET `http://localhost:6060/meetups/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8` (get a specific meetup passing [arweave transactionId](https://viewblock.io/arweave/tx/s_w4VDX_IynmXcmOnW_9W5tg9ppzj35_R3-HsAcZ1W8))
-- POST `http://localhost:6060/meetups` 
-    ```js
-    {
-      "title": "Learn JS from Scratch",
-      "desc": "From the basics",
-      "date": "2022-07-12T14:30:44.660Z"
-    }
-    ```
-
-## Consumer
-
-To run the consumer you can use
-
-```shell
-docker-compose exec nodejs npm run consumer
-```
-
-You can check queues status using `docker-compose exec nodejs npm run monitor:queue`
+See [API documentation](https://occhiodihorusdao.stoplight.io/docs/meetup/dd52083203c7c-community)
 
 ## Linting
 
@@ -71,16 +50,6 @@ The app is conteneraized and deploied in Heroku. Here the steps to build and rel
 - `npx heroku container:login` (log in to Heroku Container Registry)
 - `npx heroku container:push web -a criptup` (builds, then pushes Docker images to deploy your Heroku app)
 - `npx heroku container:release web -a criptup` (Releases previously pushed Docker images to your Heroku app)
-
-## Queues
-
-### Consume messages
-
-Run this command in a terminal along with the server
-
-```
-docker-compose exec nodejs npm run consume
-```
 
 ## Test with local blockchain (Ganache)
 
@@ -121,11 +90,11 @@ you will get a response like
 0x5b1869D9A4C187F2EAa108f3062412ecf0526b24
 ```
 
-##### Set Organization Factory Address
+##### Set Community Factory Address
 
-You can set the organization address in the `.env`
+You can set the community address in the `.env`
 
 ```
-ORGANIZATION_FACTORY_ADDRESS="0x5b1869D9A4C187F2EAa108f3062412ecf0526b24"
+COMMUNITY_FACTORY_ADDRESS="0x5b1869D9A4C187F2EAa108f3062412ecf0526b24"
 ```
 

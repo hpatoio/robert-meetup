@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import { validationResult, ValidationChain } from "express-validator";
+import { validationResult, ValidationChain, body } from "express-validator";
 
 // see https://express-validator.github.io/docs/running-imperatively.html
 export const validate = (validations: ValidationChain[]) => {
@@ -14,4 +14,12 @@ export const validate = (validations: ValidationChain[]) => {
 
     res.status(400).json({ errors: errors.array() });
   };
+};
+
+export const requireSignature = () => {
+  return [
+    body("signedMessage").notEmpty(),
+    body("message").notEmpty(),
+    body("digest").notEmpty(),
+  ];
 };

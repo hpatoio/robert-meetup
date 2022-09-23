@@ -1,4 +1,4 @@
-FROM node:18 as dev
+FROM node:18-slim as dev
 RUN npm install --global typescript
 WORKDIR /var/ts
 

@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import type { Request, Response, NextFunction } from "express";
-import { isValidHash, generateMessageHash } from "../utils/crypto";
+import { isValidHash, generateDigest } from "../utils/crypto";
 
 export const onlyAdmins = (
   request: Request,
@@ -17,32 +17,34 @@ export const onlyAdmins = (
   next();
 };
 
-export const onlySigned = (
-  request: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  const wallet = request.body.wallet || request.params.wallet;
-  const { message, messageHash, signedMessage } = request.body;
+export const onlySigned =
+  (param) => (request: Request, response: Response, next: NextFunction) => {
+    const wallet = request.body[param] || request.params[param];
 
-  const serverHash = generateMessageHash(message);
-
-  try {
-    if (!isValidHash(serverHash, messageHash)) {
+    if (!wallet) {
       throw Error();
     }
-    const byteMessage = ethers.utils.toUtf8Bytes(message);
-    const walletFromSignature = ethers.utils.verifyMessage(
-      byteMessage,
-      signedMessage
-    );
-    if (walletFromSignature !== wallet) {
-      throw Error();
-    }
-  } catch (e) {
-    response.status(403).json({ message: "Invalid signature" });
-    return;
-  }
 
-  next();
-};
+    const { message, digest, signedMessage } = request.body;
+
+    const serverHash = generateDigest(message);
+
+    try {
+      if (!isValidHash(serverHash, digest)) {
+        throw Error();
+      }
+      const byteMessage = ethers.utils.toUtf8Bytes(message);
+      const walletFromSignature = ethers.utils.verifyMessage(
+        byteMessage,
+        signedMessage
+      );
+      if (walletFromSignature !== wallet) {
+        throw Error();
+      }
+    } catch (e) {
+      response.status(403).json({ message: "Invalid signature" });
+      return;
+    }
+
+    next();
+  };
